@@ -1,0 +1,49 @@
+.cards__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards__recommend {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 40px;
+}
+
+.cards__container {
+  position: relative;
+}
+
+.cards__items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 17px;
+}
+
+.cards__image {
+  width: 328px;
+  height: 328px;
+  border-radius: 19px;
+  cursor: pointer;
+}
+
+.cards__description {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cards__name {
+  background-color: #fff;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 2px 12px;
+  border-radius: 4px;
+}
