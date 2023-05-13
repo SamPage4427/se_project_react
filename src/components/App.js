@@ -22,15 +22,18 @@ function App() {
     }
   }
 
-  const handleCreateModal = () => {
-    setActiveModal("create");
+  function handleOpenModal(modal) {
+    setActiveModal(modal);
     document.addEventListener("keydown", handleEscClose);
+  }
+
+  const handleCreateModal = () => {
+    handleOpenModal("create");
   };
 
   const handlePreviewModal = (card) => {
-    setActiveModal("preview");
+    handleOpenModal("preview");
     setSelectCard(card);
-    document.addEventListener("keydown", handleEscClose);
   };
 
   const handleCloseModal = () => {
@@ -86,33 +89,33 @@ function App() {
                 className="modal__btn-radio"
                 name="radio-btn"
                 type="radio"
-                id="hot"
+                id="radio-hot-btn-input"
                 value="hot"
                 required
               />
-              <label htmlFor="radio-btn"> Hot</label>
+              <label htmlFor="radio-hot-btn-input"> Hot</label>
             </div>
             <div className="modal__button">
               <input
                 className="modal__btn-radio"
                 name="radio-btn"
                 type="radio"
-                id="warm"
+                id="radio-warm-btn-input"
                 value="warm"
                 required
               />
-              <label htmlFor="radio-btn"> Warm</label>
+              <label htmlFor="radio-warm-btn-input"> Warm</label>
             </div>
             <div className="modal__button">
               <input
                 className="modal__btn-radio"
                 name="radio-btn"
                 type="radio"
-                id="cold"
+                id="radio-cold-btn-input"
                 value="cold"
                 required
               />
-              <label htmlFor="radio-btn"> Cold</label>
+              <label htmlFor="radio-cold-btn-input"> Cold</label>
             </div>
           </ModalWithForm>
         )}
