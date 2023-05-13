@@ -32,6 +32,12 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 1.2;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.header__button:hover {
+  opacity: 0.6;
 }
 
 .header__name {

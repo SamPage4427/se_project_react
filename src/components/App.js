@@ -3,7 +3,7 @@ import "../blocks/app/App.css";
 import { useEffect, useState } from "react";
 
 import { ESC_KEYCODE } from "../utils/constants";
-import { getForcastWeather, parseWeatherData } from "../utils/WeatherAPI";
+import { getForcastWeather, parseWeatherData } from "../utils/weatherAPI.js";
 
 import Header from "./Header.js";
 import Main from "./Main.js";
@@ -39,10 +39,12 @@ function App() {
   };
 
   useEffect(() => {
-    getForcastWeather().then((data) => {
-      const weatherTemp = parseWeatherData(data);
-      setTemp(weatherTemp);
-    });
+    getForcastWeather()
+      .then((data) => {
+        const weatherTemp = parseWeatherData(data);
+        setTemp(weatherTemp);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -82,32 +84,35 @@ function App() {
             <div className="modal__button">
               <input
                 className="modal__btn-radio"
+                name="radio-btn"
                 type="radio"
                 id="hot"
                 value="hot"
                 required
               />
-              <label> Hot</label>
+              <label htmlFor="radio-btn"> Hot</label>
             </div>
             <div className="modal__button">
               <input
                 className="modal__btn-radio"
+                name="radio-btn"
                 type="radio"
                 id="warm"
                 value="warm"
                 required
               />
-              <label> Warm</label>
+              <label htmlFor="radio-btn"> Warm</label>
             </div>
             <div className="modal__button">
               <input
                 className="modal__btn-radio"
+                name="radio-btn"
                 type="radio"
                 id="cold"
                 value="cold"
                 required
               />
-              <label> Cold</label>
+              <label htmlFor="radio-btn"> Cold</label>
             </div>
           </ModalWithForm>
         )}

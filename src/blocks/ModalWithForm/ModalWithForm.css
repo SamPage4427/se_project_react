@@ -33,6 +33,7 @@
   height: 14px;
   border: none;
   transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .modal__close-btn:hover {

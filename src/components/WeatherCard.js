@@ -1,11 +1,11 @@
 import { weatherOptions } from "../utils/constants.js";
 
 function WeatherCard({ day, weatherType, temp }) {
-  const imgSrc = weatherOptions.filter((i) => {
-    return i.day === day && i.weatherType === weatherType;
+  const weatherOption = weatherOptions.find((item) => {
+    return item.day === day && item.weatherType === weatherType;
   });
 
-  const imgSrcUrl = imgSrc[0].url || "";
+  const imgSrcUrl = weatherOption.url || "";
 
   return (
     <section className="weather" id="weather-section">

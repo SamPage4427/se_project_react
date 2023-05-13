@@ -5,7 +5,7 @@ import ItemCard from "./ItemCard";
 import { useMemo } from "react";
 
 function Main({ temp, onImageClick }) {
-  const weatherType = useMemo(() => {
+  const getWeatherType = () => {
     if (temp >= 86) {
       return "hot";
     } else if (temp >= 56 && temp <= 85) {
@@ -13,7 +13,8 @@ function Main({ temp, onImageClick }) {
     } else if (temp <= 55) {
       return "cold";
     }
-  }, [temp]);
+  };
+  const weatherType = getWeatherType();
 
   const filteredCards = defaultClothes.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
@@ -28,7 +29,13 @@ function Main({ temp, onImageClick }) {
         </p>
         <div className="cards__items">
           {filteredCards.map((item) => {
-            return <ItemCard item={item} onSelectCard={onImageClick} />;
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onSelectCard={onImageClick}
+              />
+            );
           })}
         </div>
       </section>
