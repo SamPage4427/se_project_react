@@ -1,10 +1,19 @@
-function ModalWithForm({ children, buttonText, title, onClose, name }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  onClose,
+  name,
+  onSubmit,
+}) {
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
         <button className="modal__close-btn" type="button" onClick={onClose} />
         <h2 className="modal__title">{title}</h2>
-        <form className="modal__form">{children}</form>
+        <form className="modal__form" onSubmit={onSubmit}>
+          {children}
+        </form>
         <button className="modal__submit-btn" type="submit">
           {buttonText}
         </button>

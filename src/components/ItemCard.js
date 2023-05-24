@@ -2,7 +2,7 @@ function ItemCard({ item, onSelectCard }) {
   return (
     <div className="cards__container">
       <img
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         className="cards__image"
         onClick={() => onSelectCard(item)}

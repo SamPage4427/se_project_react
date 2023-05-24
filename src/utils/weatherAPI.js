@@ -20,4 +20,9 @@ function parseWeatherData(data) {
   return Math.ceil(temp);
 }
 
-export { getForcastWeather, parseWeatherData };
+const temperature = (temp) => ({
+  F: `${Math.round(temp)}`,
+  C: `${Math.round(((temp - 32) * 5) / 9)}`,
+});
+
+export { getForcastWeather, parseWeatherData, temperature, checkStatus };

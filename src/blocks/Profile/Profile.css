@@ -1,0 +1,15 @@
+.profile {
+  display: flex;
+  gap: 117px;
+  margin: 40px 40px 80px;
+}
+
+.profile__sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__clothes-section {
+  display: flex;
+  flex-direction: column;
+}
