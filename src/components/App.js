@@ -8,7 +8,7 @@ import { getForcastWeather, parseWeatherData } from "../utils/weatherAPI.js";
 import API from "../utils/api.js";
 
 /*       Context Imports       */
-import CurrentTempUnitContext from "../contexts/CurrentTempUnitContext.js";
+import CurrentTempUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 /*       Funtional Imports       */
 import Header from "./Header.js";
