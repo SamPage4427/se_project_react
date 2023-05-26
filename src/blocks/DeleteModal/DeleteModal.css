@@ -1,0 +1,71 @@
+.delete__modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.delete__modal-content {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 670px;
+  height: 280px;
+}
+
+.delete__description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0;
+  padding-top: 60px;
+}
+
+.delete__btn-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.delete__confirm {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  padding-bottom: 24px;
+}
+
+.delete__confirm:hover {
+  color: #ff0000;
+}
+
+.delete__cancel {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.delete__cancel:hover {
+  opacity: 60%;
+}

@@ -25,12 +25,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4"
     },
     {
-      "name": "Dress",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Dress.png?etag=1f9cd32a311ab139cab43494883720bf",
-      "id": 5
-    },
-    {
       "name": "Hoodie",
       "weather": "cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
@@ -73,12 +67,6 @@
       "id": 12
     },
     {
-      "name": "Skirt",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Skirt.png?etag=27a6bea7e1b63218820d615876fa31d1",
-      "id": 13
-    },
-    {
       "name": "Sneakers",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
@@ -101,6 +89,24 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 17
+    },
+    {
+      "name": "Baseball Cap",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591",
+      "weather": "warm",
+      "id": 18
+    },
+    {
+      "name": "Dream Cloak Coat",
+      "imageUrl": "https://animeape.com/wp-content/uploads/2022/04/Itachi-Uchiha-Naruto_AOP-Hooded-Cloak-Coat-MAIN_Mockup.jpg",
+      "weather": "cold",
+      "id": 19
+    },
+    {
+      "name": "Los Angeles Baseball Cap",
+      "imageUrl": "https://www.kickz.com/dw/image/v2/BGQV_PRD/on/demandware.static/-/Sites-kickz-master-catalog/default/dw2651af0a/images/large/new_era-MLB_5950_LOS_ANGELES_DODGERS-BLACK_001-4.jpg?sw=537&q=95",
+      "weather": "hot",
+      "id": 20
     }
   ]
 }

@@ -1,23 +1,23 @@
+/*       React Imports       */
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 
-import {
-  ESC_KEYCODE,
-  defaultClothes,
-  baseUrl,
-  headers,
-} from "../utils/constants";
+/*      Util Imports      */
+import { ESC_KEYCODE, baseUrl, headers } from "../utils/constants";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherAPI.js";
+import API from "../utils/api.js";
 
+/*       Context Imports       */
 import CurrentTempUnitContext from "../contexts/CurrentTempUnitContext.js";
 
+/*       Funtional Imports       */
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Profile from "./Profile.js";
 import Footer from "./Footer.js";
 import ItemModal from "./ItemModal.js";
 import AddItemModal from "./AddItemModal.js";
-import API from "../utils/api.js";
+import DeleteConfirmModal from "./DeleteConfirmModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -48,6 +48,10 @@ function App() {
     setSelectCard(card);
   };
 
+  function handleDeleteModal() {
+    handleOpenModal("delete");
+  }
+
   const handleCloseModal = () => {
     setActiveModal("");
     document.removeEventListener("keydown", handleEscClose);
@@ -61,13 +65,26 @@ function App() {
 
   function handleAddItem({ name, imageUrl, weather }) {
     api
-      .addItems({
+      .addItem({
         name,
         imageUrl,
         weather,
       })
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((err) => console.error(err));
+  }
+
+  function handleDeleteItem(itemId) {
+    api
+      .deleteItem(itemId)
+      .then(() => {
+        const updateItems = clothingItems.filter((item) => {
+          return item.id !== itemId;
+        });
+        setClothingItems(updateItems);
         handleCloseModal();
       })
       .catch((err) => console.error(err));
@@ -91,7 +108,7 @@ function App() {
   return (
     <>
       <div className="page">
-        <BrowserRouter>
+        <HashRouter>
           <CurrentTempUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
@@ -119,10 +136,23 @@ function App() {
               />
             )}
             {activeModal === "preview" && (
-              <ItemModal item={selectCard} onClose={handleCloseModal} />
+              <ItemModal
+                item={selectCard}
+                onClose={handleCloseModal}
+                onDelete={handleDeleteModal}
+              />
+            )}
+            {activeModal === "delete" && (
+              <DeleteConfirmModal
+                name="delete-modal"
+                onClose={handleCloseModal}
+                onConfirm={handleDeleteItem}
+                onCancel={handleCloseModal}
+                selectCard={selectCard}
+              />
             )}
           </CurrentTempUnitContext.Provider>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </>
   );

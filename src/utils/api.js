@@ -15,11 +15,11 @@ class API {
       .catch((err) => console.error(err));
   }
 
-  addItems({ name, imageUrl, weather }) {
+  addItem({ name, imageUrl, weather }) {
     return fetch(`${this._baseUrl}/items`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.Stringify({
+      body: JSON.stringify({
         name,
         imageUrl,
         weather,
@@ -29,8 +29,8 @@ class API {
       .catch((err) => console.error(err));
   }
 
-  deleteItems() {
-    return fetch(`${this._baseUrl}/items/:id`, {
+  deleteItem(id) {
+    return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: this._headers,
     })

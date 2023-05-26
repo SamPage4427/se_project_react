@@ -13,10 +13,10 @@ function ModalWithForm({
         <h2 className="modal__title">{title}</h2>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
+          <button className="modal__submit-btn" type="submit">
+            {buttonText}
+          </button>
         </form>
-        <button className="modal__submit-btn" type="submit">
-          {buttonText}
-        </button>
       </div>
     </div>
   );

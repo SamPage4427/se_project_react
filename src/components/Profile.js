@@ -16,6 +16,9 @@ function Profile({ items, onSelectCard, openModal }) {
               return (
                 <ItemCard
                   key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  weather={item.weather}
                   item={item}
                   onSelectCard={onSelectCard}
                 />

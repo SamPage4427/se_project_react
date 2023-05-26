@@ -44,3 +44,21 @@
   padding-left: 32px;
   padding-bottom: 32px;
 }
+
+.item__delete-btn {
+  display: flex;
+  position: absolute;
+  right: 32px;
+  bottom: 68px;
+  border: none;
+  background: transparent;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #ff4d00;
+}
+
+.item__delete-btn:hover {
+  color: #f80000;
+}
