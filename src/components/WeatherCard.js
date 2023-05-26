@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import CurrentTempUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 import { weatherOptions } from "../utils/constants.js";
 import { temperature } from "../utils/weatherAPI.js";
 
@@ -11,7 +11,7 @@ function WeatherCard({ day, weatherType, temp }) {
 
   const imgSrcUrl = weatherOption.url || "";
 
-  const { currentTemperatureUnit } = useContext(CurrentTempUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const currentTemp = temperature(temp)[currentTemperatureUnit];
 
   return (

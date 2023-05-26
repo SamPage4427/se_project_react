@@ -3,12 +3,12 @@ import { useContext } from "react";
 
 import WeatherCard from "./WeatherCard.js";
 import ItemCard from "./ItemCard.js";
-import CurrentTempUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 // import { defaultClothes } from "../utils/constants.js";
 import { temperature } from "../utils/weatherAPI";
 
 function Main({ temp, onImageClick, clothingItems }) {
-  const { currentTemperatureUnit } = useContext(CurrentTempUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
     if (temp >= 86) {
       return "hot";

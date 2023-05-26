@@ -1,3 +1,5 @@
+import "../blocks/app/App.css";
+
 /*       React Imports       */
 import { useEffect, useState } from "react";
 import { HashRouter, Route } from "react-router-dom";
@@ -8,7 +10,7 @@ import { getForcastWeather, parseWeatherData } from "../utils/weatherAPI.js";
 import API from "../utils/api.js";
 
 /*       Context Imports       */
-import CurrentTempUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 /*       Funtional Imports       */
 import Header from "./Header.js";
@@ -109,7 +111,7 @@ function App() {
     <>
       <div className="page">
         <HashRouter>
-          <CurrentTempUnitContext.Provider
+          <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
             <Header location={"Tokyo"} onCreateModal={handleCreateModal} />
@@ -151,7 +153,7 @@ function App() {
                 selectCard={selectCard}
               />
             )}
-          </CurrentTempUnitContext.Provider>
+          </CurrentTemperatureUnitContext.Provider>
         </HashRouter>
       </div>
     </>
