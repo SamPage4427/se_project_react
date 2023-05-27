@@ -21,24 +21,18 @@ import ItemModal from "./ItemModal.js";
 import AddItemModal from "./AddItemModal.js";
 import DeleteConfirmModal from "./DeleteConfirmModal.js";
 
+const api = new API({ baseUrl, headers });
+
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectCard] = useState({});
   const [temp, setTemp] = useState(32);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-
-  const api = new API({ baseUrl, headers });
-
-  function handleEscClose(e) {
-    if (e.which === ESC_KEYCODE) {
-      handleCloseModal();
-    }
-  }
+  // const [isLoading, setIsLoading] = useState(false);
 
   function handleOpenModal(modal) {
     setActiveModal(modal);
-    document.addEventListener("keydown", handleEscClose);
   }
 
   const handleCreateModal = () => {
@@ -56,7 +50,6 @@ function App() {
 
   const handleCloseModal = () => {
     setActiveModal("");
-    document.removeEventListener("keydown", handleEscClose);
   };
 
   const handleToggleSwitchChange = () => {
@@ -64,6 +57,10 @@ function App() {
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
   };
+
+  // const handleIsLoading = () => {
+  //   isLoading === false ? setIsLoading(true) : setIsLoading(false);
+  // };
 
   function handleAddItem({ name, imageUrl, weather }) {
     api
@@ -93,6 +90,19 @@ function App() {
   }
 
   useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.which === ESC_KEYCODE) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => document.removeEventListener("keydown", handleEscClose);
+  }, [activeModal]);
+
+  useEffect(() => {
     getForcastWeather()
       .then((data) => {
         const weatherTemp = parseWeatherData(data);
@@ -108,55 +118,58 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div className="page">
-        <HashRouter>
-          <CurrentTemperatureUnitContext.Provider
-            value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-          >
-            <Header location={"Tokyo"} onCreateModal={handleCreateModal} />
-            <Route exact path="/">
-              <Main
-                temp={temp}
-                clothingItems={clothingItems}
-                onImageClick={handlePreviewModal}
-              />
-            </Route>
-            <Route path="/profile">
-              <Profile
-                items={clothingItems}
-                onSelectCard={handlePreviewModal}
-                openModal={handleCreateModal}
-              />
-            </Route>
-            <Footer />
-            {activeModal === "create" && (
-              <AddItemModal
-                isOpen={handleCreateModal}
-                onClose={handleCloseModal}
-                onAddItem={handleAddItem}
-              />
-            )}
-            {activeModal === "preview" && (
-              <ItemModal
-                item={selectCard}
-                onClose={handleCloseModal}
-                onDelete={handleDeleteModal}
-              />
-            )}
-            {activeModal === "delete" && (
-              <DeleteConfirmModal
-                name="delete-modal"
-                onClose={handleCloseModal}
-                onConfirm={handleDeleteItem}
-                onCancel={handleCloseModal}
-                selectCard={selectCard}
-              />
-            )}
-          </CurrentTemperatureUnitContext.Provider>
-        </HashRouter>
-      </div>
-    </>
+    <div className="page">
+      <HashRouter>
+        <CurrentTemperatureUnitContext.Provider
+          value={{
+            currentTemperatureUnit,
+            handleToggleSwitchChange,
+          }}
+        >
+          <Header location={"Tokyo"} onCreateModal={handleCreateModal} />
+          <Route exact path="/">
+            <Main
+              temp={temp}
+              clothingItems={clothingItems}
+              onImageClick={handlePreviewModal}
+            />
+          </Route>
+          <Route path="/profile">
+            <Profile
+              items={clothingItems}
+              onSelectCard={handlePreviewModal}
+              openModal={handleCreateModal}
+            />
+          </Route>
+          <Footer />
+          {activeModal === "create" && (
+            <AddItemModal
+              isOpen={handleCreateModal}
+              onClose={handleCloseModal}
+              onAddItem={handleAddItem}
+              buttonText="Add Garment"
+            />
+          )}
+          {activeModal === "preview" && (
+            <ItemModal
+              item={selectCard}
+              onClose={handleCloseModal}
+              onDelete={handleDeleteModal}
+            />
+          )}
+          {activeModal === "delete" && (
+            <DeleteConfirmModal
+              name="delete-modal"
+              onClose={handleCloseModal}
+              onConfirm={handleDeleteItem}
+              onCancel={handleCloseModal}
+              selectCard={selectCard}
+              buttonText="Yes, delete item"
+            />
+          )}
+        </CurrentTemperatureUnitContext.Provider>
+      </HashRouter>
+    </div>
   );
 }
 

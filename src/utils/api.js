@@ -10,9 +10,7 @@ class API {
     return fetch(`${this._baseUrl}/items`, {
       method: "GET",
       headers: this._headers,
-    })
-      .then(checkStatus)
-      .catch((err) => console.error(err));
+    }).then(checkStatus);
   }
 
   addItem({ name, imageUrl, weather }) {
@@ -24,18 +22,14 @@ class API {
         imageUrl,
         weather,
       }),
-    })
-      .then(checkStatus)
-      .catch((err) => console.error(err));
+    }).then(checkStatus);
   }
 
   deleteItem(id) {
     return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then(checkStatus)
-      .catch((err) => console.error(err));
+    }).then(checkStatus);
   }
 }
 
