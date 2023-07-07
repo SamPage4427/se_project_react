@@ -62,3 +62,11 @@
 .item__delete-btn:hover {
   color: #f80000;
 }
+
+.item__delete-btn_visible {
+  visibility: visible;
+}
+
+.item__delete-btn_hidden {
+  visibility: hidden;
+}

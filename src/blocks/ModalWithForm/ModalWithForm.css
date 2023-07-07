@@ -113,3 +113,22 @@
   color: #808080;
   opacity: 0.3;
 }
+
+.modal__alt-button {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  width: 124px;
+  height: 36px;
+  border: none;
+  margin: 24px 0 36px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.modal__alt-button:hover {
+  opacity: 40%;
+}
