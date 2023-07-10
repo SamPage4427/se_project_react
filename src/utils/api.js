@@ -1,36 +1,68 @@
 import { checkStatus } from "./weatherAPI.js";
+import { baseUrl } from "./constants.js";
 
-class API {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
-  }
-
-  getItems() {
-    return fetch(`${this._baseUrl}/items`, {
-      method: "GET",
-      headers: this._headers,
-    }).then(checkStatus);
-  }
-
-  addItem({ name, imageUrl, weather }) {
-    return fetch(`${this._baseUrl}/items`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        name,
-        imageUrl,
-        weather,
-      }),
-    }).then(checkStatus);
-  }
-
-  deleteItem(id) {
-    return fetch(`${this._baseUrl}/items/${id}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(checkStatus);
-  }
+function getItems() {
+  return fetch(`${baseUrl}/items`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(checkStatus);
 }
 
-export default API;
+function addItem({ name, imageUrl, weather }, token) {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      imageUrl,
+      weather,
+    }),
+  }).then(checkStatus);
+}
+
+function deleteItem(id, token) {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkStatus);
+}
+
+function addCardLike({ _id, user }, token) {
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ _id, user }),
+  }).then(checkStatus);
+}
+
+function removeCardLike({ _id }, token) {
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ _id }),
+  }).then(checkStatus);
+}
+
+const api = {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+};
+
+export default api;

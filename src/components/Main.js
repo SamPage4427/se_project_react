@@ -7,7 +7,7 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 // import { defaultClothes } from "../utils/constants.js";
 import { temperature } from "../utils/weatherAPI";
 
-function Main({ temp, onImageClick, clothingItems }) {
+function Main({ temp, onImageClick, clothingItems, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
     if (temp >= 86) {
@@ -21,6 +21,7 @@ function Main({ temp, onImageClick, clothingItems }) {
   const weatherType = getWeatherType();
 
   const currentTemp = temperature(temp)[currentTemperatureUnit];
+  console.log(clothingItems);
 
   const filteredCards = clothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
@@ -37,7 +38,12 @@ function Main({ temp, onImageClick, clothingItems }) {
         <div className="cards__items">
           {filteredCards.map((item) => {
             return (
-              <ItemCard key={item.id} item={item} onSelectCard={onImageClick} />
+              <ItemCard
+                key={item.id}
+                item={item}
+                onSelectCard={onImageClick}
+                onCardLike={onCardLike}
+              />
             );
           })}
         </div>

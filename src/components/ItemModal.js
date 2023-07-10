@@ -3,10 +3,11 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function ItemModal({ item, onClose, onDelete }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const isOwn = item.owner._id === currentUser._id;
+  const isOwn = item.owner === currentUser._id;
   const itemDeleteButtonClassName = `item__delete-btn ${
     isOwn ? "item__delete-btn_visible" : "item__delete-btn_hidden"
   }`;
+  console.log(isOwn);
 
   return (
     <div className="item__modal">

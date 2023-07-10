@@ -1,6 +1,11 @@
 .clothes-section {
   display: flex;
+  flex-direction: column;
   padding-bottom: 35px;
+}
+
+.clothes-section__header {
+  display: flex;
 }
 
 .clothes-section__title {

@@ -3,9 +3,9 @@ import { Route, Redirect } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 function ProtectedRoute({ children, ...props }) {
-  const { loggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
   return (
-    <Route {...props}>{loggedIn ? children : <Redirect to="/main" />}</Route>
+    <Route {...props}>{isLoggedIn ? children : <Redirect to="/" />}</Route>
   );
 }
 

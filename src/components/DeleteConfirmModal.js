@@ -19,7 +19,7 @@ function DeleteConfirmModal({
           <button
             className="delete__confirm"
             type="button"
-            onClick={() => onConfirm(selectCard.id)}
+            onClick={() => onConfirm(selectCard._id)}
           >
             Yes, delete item
           </button>

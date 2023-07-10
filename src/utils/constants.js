@@ -20,8 +20,6 @@ export const latitude = 35.6762;
 export const longitude = 139.6503;
 export const ESC_KEYCODE = 27;
 export const baseUrl = "http://localhost:3001";
-export const headers = { "Content-Type": "application/json" };
-
 export const weatherOptions = [
   {
     url: sunnyDay,

@@ -4,7 +4,7 @@ function checkStatus(res) {
   if (res.ok) {
     return res.json();
   }
-  Promise.reject(`Error: ${res.status}`);
+  return Promise.reject(`Error: ${res.status}`);
 }
 
 function getForcastWeather() {

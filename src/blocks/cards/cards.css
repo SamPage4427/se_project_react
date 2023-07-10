@@ -46,4 +46,23 @@
   line-height: 1.2;
   padding: 2px 12px;
   border-radius: 4px;
+  width: 91px;
+}
+
+.cards__like {
+  background: transparent url("../../images/like-button.png") center no-repeat;
+  border: none;
+  width: 20px;
+  height: 18px;
+  margin-left: 10px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.cards__like:hover {
+  opacity: 60%;
+}
+
+.cards__like_active {
+  background: transparent url("../../images/like-active.png") center no-repeat;
+  border: none;
 }

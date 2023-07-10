@@ -1,10 +1,35 @@
-import avatarImage from "../images/avatar.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function SideBar() {
+function SideBar({ openModal, onSignout }) {
+  const { currentUser, noAvatar } = useContext(CurrentUserContext);
+
   return (
     <div className="sidebar">
-      <img src={avatarImage} alt="Avatar" className="sidebar__avatar" />
-      <h3 className="sidebar__name">Terrence Tegegne</h3>
+      <div className="sidebar__user-info">
+        {currentUser ? (
+          <img
+            src={currentUser.avatar}
+            alt="Avatar"
+            className="sidebar__avatar"
+          />
+        ) : (
+          <p className="sidebar__noavatar">{noAvatar}</p>
+        )}
+        <h3 className="sidebar__name">{currentUser.name}</h3>
+      </div>
+      <div className="sidebar__btn-container">
+        <button
+          className="sidebar__btn-update"
+          type="button"
+          onClick={openModal}
+        >
+          Change profile data
+        </button>
+        <button className="sidebar__logout" type="button" onClick={onSignout}>
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { baseUrl } from "./constants.js";
+import { checkStatus } from "./weatherAPI.js";
 
 export function signIn({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
@@ -9,8 +10,8 @@ export function signIn({ email, password }) {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => res.json())
-    .catch((e) => console.error(e));
+    .then(checkStatus)
+    .catch((e) => console.error(`Error in auth login: ${e}`));
 }
 
 export function register({ email, password, name, avatar }) {
@@ -22,16 +23,34 @@ export function register({ email, password, name, avatar }) {
     },
     body: JSON.stringify({ email, password, name, avatar }),
   })
-    .then((res) => res.json())
-    .catch((e) => console.error(e));
+    .then(checkStatus)
+    .catch((e) => console.error(`Error in auth register: ${e}`));
 }
 
 export function validTokenCheck(token) {
-  fetch(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}/user/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  })
+    .then(checkStatus)
+    .then((data) => {
+      return data;
+    })
+    .catch((e) => console.error(`Error in auth checkToken: ${e}`));
+}
+
+export function updateUser(token, { name, avatar }) {
+  return fetch(`${baseUrl}/user/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  })
+    .then(checkStatus)
+    .catch((e) => console.error(`Error in auth update: ${e}`));
 }
