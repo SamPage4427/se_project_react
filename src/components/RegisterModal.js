@@ -67,6 +67,7 @@ function RegisterModal({ isOpen, onSignUp, onClose, buttonText }) {
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
+          required
         />
       </label>
       <label>

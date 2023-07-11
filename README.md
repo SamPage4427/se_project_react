@@ -8,6 +8,6 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Github Repository](https://github.com/SamPage4427/se_project_react)
-- [Github Page](https://SamPage4427.github.io/se_project_react) <-- For Practicum use
+- [Github Page](https://SamPage4427.github.io/se_project_react) <-- For TripleTen use
 - [React Domain Address](https://www.samjpage.dev/se_project_react) <-- Linked to google domain
 - [Back-End Code](https://github.com/SamPage4427/se_project_express)

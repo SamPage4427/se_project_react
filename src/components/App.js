@@ -153,14 +153,11 @@ function App() {
   }
 
   const handleLikeClick = (currentUser, isLiked) => {
-    console.log({ isLiked });
-
     !isLiked
       ? api
           .addCardLike(currentUser, token)
           .then((updatedCard) => {
             updatedCard = updatedCard.data;
-            console.log(updatedCard);
             setClothingItems((items) =>
               items.map((item) =>
                 item._id === currentUser._id ? updatedCard : item
@@ -172,7 +169,6 @@ function App() {
           .removeCardLike(currentUser, token)
           .then((updatedCard) => {
             updatedCard = updatedCard.data;
-            console.log(updatedCard);
             setClothingItems((items) =>
               items.map((item) =>
                 item._id === currentUser._id ? updatedCard : item
@@ -234,7 +230,9 @@ function App() {
           handleToggleSwitchChange,
         }}
       >
-        <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
+        <CurrentUserContext.Provider
+          value={{ currentUser, isLoggedIn, noAvatar }}
+        >
           <Header
             location={"Tokyo"}
             onCreateModal={handleCreateModal}
