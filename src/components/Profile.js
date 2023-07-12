@@ -7,6 +7,7 @@ function Profile({
   openCardModal,
   openSideEditModal,
   onSignout,
+  onCardLike,
 }) {
   return (
     <div className="profile">
@@ -18,6 +19,7 @@ function Profile({
           openModal={openCardModal}
           items={items}
           onSelectCard={onSelectCard}
+          onCardLike={onCardLike}
         />
       </div>
     </div>

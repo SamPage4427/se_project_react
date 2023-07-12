@@ -7,7 +7,6 @@ function ItemModal({ item, onClose, onDelete }) {
   const itemDeleteButtonClassName = `item__delete-btn ${
     isOwn ? "item__delete-btn_visible" : "item__delete-btn_hidden"
   }`;
-  console.log(isOwn);
 
   return (
     <div className="item__modal">

@@ -169,7 +169,7 @@ function App() {
     }
   }
 
-  const handleLikeClick = (currentUser, isLiked) => {
+  function handleLikeClick(currentUser, isLiked) {
     !isLiked
       ? api
           .addCardLike(currentUser, token)
@@ -193,7 +193,7 @@ function App() {
             );
           })
           .catch((e) => console.error(e));
-  };
+  }
 
   useEffect(() => {
     if (!activeModal) return;
@@ -274,6 +274,7 @@ function App() {
               openCardModal={handleCreateModal}
               openSideEditModal={handleEditProfileModal}
               onSignout={handleSignout}
+              onCardLike={handleLikeClick}
             />
           </ProtectedRoute>
           <Footer />

@@ -36,7 +36,7 @@ function Main({ temp, onImageClick, clothingItems, onCardLike }) {
           {filteredCards.map((item) => {
             return (
               <ItemCard
-                key={item.id}
+                key={item._id}
                 item={item}
                 onSelectCard={onImageClick}
                 onCardLike={onCardLike}

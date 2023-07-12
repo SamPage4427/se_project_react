@@ -8,6 +8,10 @@ function ItemCard({ item, onSelectCard, onCardLike }) {
     isLiked ? "cards__like_active" : "cards__like_inactive"
   }`;
 
+  const handleCardLike = () => {
+    onCardLike(item, isLiked);
+  };
+
   return (
     <div className="cards__container">
       <img
@@ -21,7 +25,7 @@ function ItemCard({ item, onSelectCard, onCardLike }) {
         <button
           className={itemLikeButtonClassName}
           type="button"
-          onClick={() => onCardLike(item, isLiked)}
+          onClick={handleCardLike}
         />
       </div>
     </div>

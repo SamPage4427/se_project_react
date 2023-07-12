@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import ItemCard from "./ItemCard.js";
 
-function ClothesSection({ items, onSelectCard, openModal }) {
+function ClothesSection({ items, onSelectCard, openModal, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext);
   const userItems = items.filter((item) => item.owner === currentUser._id);
 
@@ -24,11 +24,12 @@ function ClothesSection({ items, onSelectCard, openModal }) {
             return (
               <ItemCard
                 key={item._id}
-                id={item.id}
+                id={item._id}
                 name={item.name}
                 weather={item.weather}
                 item={item}
                 onSelectCard={onSelectCard}
+                onCardLike={onCardLike}
               />
             );
           })}
