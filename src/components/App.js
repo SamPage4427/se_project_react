@@ -102,6 +102,7 @@ function App() {
         const data = res.data;
         setLoggedIn(true);
         setCurrentUser(data);
+        setToken(data.token);
         handleCloseModal();
         history.push("/profile");
         setNoAvatar(handleNoAvatar(data.name));
@@ -123,12 +124,13 @@ function App() {
       .updateUser(token, { name, avatar })
       .then(() => {
         handleCloseModal();
-        setCurrentUser({ name, avatar });
+        setCurrentUser({ ...currentUser, name, avatar });
       })
       .catch((e) => console.error(`Error: ${e}. Could not update user`));
   }
 
   function handleAddItem({ name, imageUrl, weather }) {
+    console.log(token);
     api
       .addItem(
         {
