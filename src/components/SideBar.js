@@ -7,7 +7,7 @@ function SideBar({ openModal, onSignout }) {
   return (
     <div className="sidebar">
       <div className="sidebar__user-info">
-        {currentUser ? (
+        {currentUser.avatar !== "" ? (
           <img
             src={currentUser.avatar}
             alt="Avatar"

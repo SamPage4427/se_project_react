@@ -24,8 +24,8 @@ import DeleteConfirmModal from "./DeleteConfirmModal.js";
 import RegisterModal from "./RegisterModal.js";
 import LoginModal from "./LoginModal.js";
 import ProtectedRoute from "./ProtectedRoute.js";
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import EditProfileModal from "./EditProfileModal";
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
+import EditProfileModal from "./EditProfileModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -71,12 +71,16 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
+  const handleNoAvatar = (name) => {
+    const initial = name.slice(0, 1);
+    return initial;
+  };
+
   function handleRegister({ email, password, name, avatar }) {
     auth
       .register({ email, password, name, avatar })
       .then((res) => {
         if (res) {
-          setCurrentUser(res.data);
           handleLogin({ email, password });
           handleCloseModal();
           console.log(isLoggedIn);
@@ -95,9 +99,12 @@ function App() {
         }
       })
       .then((res) => {
+        const data = res.data;
         setLoggedIn(true);
-        setCurrentUser(res.data);
+        setCurrentUser(data);
         handleCloseModal();
+        history.push("/profile");
+        setNoAvatar(handleNoAvatar(data.name));
         console.log(isLoggedIn);
       })
       .catch((e) => console.error(`Error logging user in: ${e}`));
@@ -122,7 +129,6 @@ function App() {
   }
 
   function handleAddItem({ name, imageUrl, weather }) {
-    // debugger;
     api
       .addItem(
         {
@@ -150,6 +156,17 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => console.error(err));
+  }
+
+  function handleAltClick() {
+    if (activeModal === "signin") {
+      handleCloseModal();
+      handleOpenModal("signup");
+    }
+    if (activeModal === "signup") {
+      handleCloseModal();
+      handleOpenModal("signin");
+    }
   }
 
   const handleLikeClick = (currentUser, isLiked) => {
@@ -215,6 +232,7 @@ function App() {
           setCurrentUser(res.data);
           setToken(jwt);
           setLoggedIn(true);
+          setNoAvatar(handleNoAvatar(res.data.name));
         })
         .catch((e) => {
           console.error(`Token Check use effect: ${e}`);
@@ -290,6 +308,8 @@ function App() {
               onLogin={handleLogin}
               onClose={handleCloseModal}
               buttonText="Log In"
+              altButtonText="or Register"
+              altClick={handleAltClick}
             />
           )}
           {activeModal === "signup" && (
@@ -298,6 +318,8 @@ function App() {
               onSignUp={handleRegister}
               onClose={handleCloseModal}
               buttonText="Next"
+              altButtonText="or Login"
+              altClick={handleAltClick}
             />
           )}
           {activeModal === "edit-profile" && (

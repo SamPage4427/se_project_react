@@ -35,8 +35,8 @@ function Header({ onCreateModal, location, onLoginModal, onRegisterModal }) {
                 {currentUser ? currentUser.name : "Terrence Tegegne"}
               </h2>
             </NavLink>
-            <NavLink to="/profile">
-              {currentUser ? (
+            <NavLink to="/profile" className="header__link">
+              {currentUser.avatar !== "" ? (
                 <img
                   src={currentUser.avatar}
                   alt="Avatar"

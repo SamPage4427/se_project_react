@@ -35,6 +35,7 @@ function AddItemModal({ isOpen, onAddItem, onClose, buttonText }) {
         <h3 className="modal__label">Name:</h3>
         <input
           className="modal__input"
+          id="item-name-input"
           type="text"
           minLength={1}
           maxLength={30}
@@ -48,6 +49,7 @@ function AddItemModal({ isOpen, onAddItem, onClose, buttonText }) {
         <h3 className="modal__label">Image:</h3>
         <input
           className="modal__input"
+          id="item-url-input"
           type="url"
           placeholder="Image URL"
           value={imageUrl}

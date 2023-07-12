@@ -24,6 +24,23 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
+.sidebar__noavatar {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.2;
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  border-radius: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .sidebar__name {
   display: flex;
   align-items: center;
