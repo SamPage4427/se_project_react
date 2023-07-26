@@ -19,7 +19,11 @@ export const apiKey = "15e59ac98f2bc0b63d4f108c616da6c4";
 export const latitude = 35.6762;
 export const longitude = 139.6503;
 export const ESC_KEYCODE = 27;
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "wtwr.twilightparadox.com"
+    : "http://localhost:3001";
+
 export const weatherOptions = [
   {
     url: sunnyDay,
