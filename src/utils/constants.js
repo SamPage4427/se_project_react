@@ -21,7 +21,7 @@ export const longitude = 139.6503;
 export const ESC_KEYCODE = 27;
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "wtwr.twilightparadox.com"
+    ? "https://api.wtwr.epicgamer.org"
     : "http://localhost:3001";
 
 export const weatherOptions = [

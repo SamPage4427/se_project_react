@@ -50,7 +50,6 @@ function App() {
   const handlePreviewModal = (card) => {
     handleOpenModal("preview");
     setSelectCard(card);
-    console.log(card);
   };
 
   function handleDeleteModal() {
@@ -83,7 +82,6 @@ function App() {
         if (res) {
           handleLogin({ email, password });
           handleCloseModal();
-          console.log(isLoggedIn);
         }
       })
       .catch((e) => console.error(`Error signing up user ${e}`));
@@ -106,7 +104,6 @@ function App() {
         handleCloseModal();
         history.push("/profile");
         setNoAvatar(handleNoAvatar(data.name));
-        console.log(isLoggedIn);
       })
       .catch((e) => console.error(`Error logging user in: ${e}`));
   }
@@ -130,7 +127,6 @@ function App() {
   }
 
   function handleAddItem({ name, imageUrl, weather }) {
-    console.log(token);
     api
       .addItem(
         {
@@ -233,7 +229,7 @@ function App() {
         .then((res) => {
           setCurrentUser(res.data);
           setToken(jwt);
-          setLoggedIn(true);
+          setLoggedIn(token !== "" ? true : false);
           setNoAvatar(handleNoAvatar(res.data.name));
         })
         .catch((e) => {

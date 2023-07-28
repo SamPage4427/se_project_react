@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "scp -r ./build/* sampage4427@wtwr.epicgamer.org:/home/sampage4427/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +40,5 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   },
-  "homepage": "https://sampage4427.github.io/se_project_react"
+  "homepage": "https://wtwr.twilightparadox.com"
 }
